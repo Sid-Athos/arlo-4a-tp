@@ -1,0 +1,32 @@
+﻿namespace Pizzeria; 
+
+public class Recipes {
+    public Recipes(List<PizzaRecipes> allPizzas) {
+        RecipesList = allPizzas;
+    }
+    
+    public List<PizzaRecipes> RecipesList { get; private set; }
+}
+
+
+public class PizzaRecipes: Attribute {
+    internal PizzaRecipes(string name, Dictionary<string, Dictionary<string, double>> ingredientsWithQuantities, double price) {
+        Name = name;
+        Ingredients = ingredientsWithQuantities;
+        Price = price;
+        Console.WriteLine(Name);
+        Console.WriteLine("Préparer la pâte");
+        var ingredients = Ingredients.Select(kvp => "Ajouter " + kvp.Key);
+        var ingredientsText = string.Join(Environment.NewLine, ingredients);
+        Console.WriteLine(ingredientsText);
+        var quantities = Ingredients["Tomate"].Select(kvp => kvp.Key + ": " + kvp.Value);
+        var quantitiesText = string.Join(Environment.NewLine, quantities);
+        Console.WriteLine(quantitiesText);
+    }
+    
+    string Name { get; set; }
+    
+    public double Price { get; private set; }
+    
+    Dictionary<string, Dictionary<string, double>> Ingredients { get; set; }
+}
