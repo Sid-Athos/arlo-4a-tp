@@ -40,11 +40,25 @@ var vege = new PizzaRecipes(
     7.5
 );
 
+PizzaRecipes margherita = 
+    new PizzaRecipes
+        .PizzaRecipesBuilder()
+            .WithName("Margherita")
+            .WithIngredients(new Dictionary<string, Dictionary<string, double>>()
+                {
+                    {"Tomate", new Dictionary<string, double>() { {"g", 150}}},
+                    {"Mozzarella", new Dictionary<string, double>() { {"g", 200}}},
+                    {"Basilic", new Dictionary<string, double>() { {"quelques", 0}}}
+                })
+            .WithPrice(7)
+            .Build();
+
 
 var list = new List<PizzaRecipes>();
 list.Add(regina);
 list.Add(fourSeasons);
 list.Add(vege);
+list.Add(margherita);
 while (true) {
     var input = Console.ReadLine();
     
