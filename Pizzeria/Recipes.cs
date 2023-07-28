@@ -19,13 +19,14 @@ public class PizzaRecipes: Attribute {
     }
     
     [JsonProperty("name")]
-    string Name { get; set; }
+    public string Name { get; set; }
     
     [JsonProperty("price")]
-    public double Price { get; private set; }
+    public double Price { get; set; }
     
     [JsonProperty("ingredients")]
-    Dictionary<string, Dictionary<string, double>> Ingredients { get; set; }
+    public Dictionary<string, Dictionary<string, double>> Ingredients { get; set; }
+
 
     internal class PizzaRecipesBuilder
     {
