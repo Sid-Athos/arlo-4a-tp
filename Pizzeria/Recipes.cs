@@ -1,12 +1,6 @@
-﻿namespace Pizzeria; 
+﻿using Newtonsoft.Json;
 
-public class Recipes {
-    public Recipes(List<PizzaRecipes> allPizzas) {
-        RecipesList = allPizzas;
-    }
-    
-    public List<PizzaRecipes> RecipesList { get; private set; }
-}
+namespace Pizzeria; 
 
 
 public class PizzaRecipes: Attribute {
@@ -24,10 +18,13 @@ public class PizzaRecipes: Attribute {
         Console.WriteLine(quantitiesText);
     }
     
+    [JsonProperty("name")]
     string Name { get; set; }
     
+    [JsonProperty("price")]
     public double Price { get; private set; }
     
+    [JsonProperty("ingredients")]
     Dictionary<string, Dictionary<string, double>> Ingredients { get; set; }
 
     internal class PizzaRecipesBuilder
