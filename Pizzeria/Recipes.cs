@@ -9,7 +9,7 @@ public class Recipes {
 }
 
 
-public class PizzaRecipes: Attribute {
+public class PizzaRecipes: Attribute {    
     internal PizzaRecipes(string name, Dictionary<string, Dictionary<string, double>> ingredientsWithQuantities, double price) {
         Name = name;
         Ingredients = ingredientsWithQuantities;
@@ -24,11 +24,11 @@ public class PizzaRecipes: Attribute {
         Console.WriteLine(quantitiesText);
     }
     
-    string Name { get; set; }
+    public string Name { get; set; }
     
     public double Price { get; private set; }
     
-    Dictionary<string, Dictionary<string, double>> Ingredients { get; set; }
+    public Dictionary<string, Dictionary<string, double>> Ingredients { get; set; }
 
     internal class PizzaRecipesBuilder
     {

@@ -59,7 +59,10 @@ list.Add(regina);
 list.Add(fourSeasons);
 list.Add(vege);
 list.Add(margherita);
+
+Formater formater = new Formater();
+formater.FormatAndWriteTo(list, FormatEnum.JSON);
+
 while (true) {
-    var input = Console.ReadLine();
-    
+    var input = Console.ReadLine();    
 }
