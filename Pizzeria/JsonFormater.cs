@@ -1,14 +1,14 @@
 namespace Pizzeria;
 
-using System.Text.Json;
+using Newtonsoft.Json;
 
 public class JsonFormater
 {
     public void FormatAndWriteTo(List<PizzaRecipes> input, string output)
     {
         StreamWriter outputFile = new StreamWriter(output);
-        // string serializedData = JsonConvert.Serialize
-        string serializedData = JsonSerializer.Serialize(input, new JsonSerializerOptions {WriteIndented = true});
+        string serializedData = JsonConvert.SerializeObject(input, Formatting.Indented);
         outputFile.WriteLine(serializedData);
+        outputFile.Close();
     }
 }

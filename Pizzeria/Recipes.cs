@@ -1,12 +1,7 @@
-﻿namespace Pizzeria; 
+﻿using System.Xml.Serialization;
+using Newtonsoft.Json;
 
-public class Recipes {
-    public Recipes(List<PizzaRecipes> allPizzas) {
-        RecipesList = allPizzas;
-    }
-    
-    public List<PizzaRecipes> RecipesList { get; private set; }
-}
+namespace Pizzeria; 
 
 
 public class PizzaRecipes: Attribute {    
@@ -23,11 +18,22 @@ public class PizzaRecipes: Attribute {
         var quantitiesText = string.Join(Environment.NewLine, quantities);
         Console.WriteLine(quantitiesText);
     }
+    internal PizzaRecipes() {
+        Name = "";
+        Ingredients = new Dictionary<string, Dictionary<string, double>>();
+        Price = 0;
+    }
     
+    [JsonProperty("name")]
+    [XmlElement("name")]
     public string Name { get; set; }
     
-    public double Price { get; private set; }
+    [JsonProperty("price")]
+    [XmlElement("price")]
+    public double Price { get; set; }
     
+    [JsonProperty("ingredients")]
+    [XmlElement("ingredients")]
     public Dictionary<string, Dictionary<string, double>> Ingredients { get; set; }
 
     internal class PizzaRecipesBuilder

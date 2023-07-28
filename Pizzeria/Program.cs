@@ -1,4 +1,6 @@
-﻿using Pizzeria;
+﻿using System.Text.RegularExpressions;
+using Newtonsoft.Json;
+using Pizzeria;
 
 Console.Clear();
 var regina = new PizzaRecipes(
@@ -55,13 +57,14 @@ PizzaRecipes margherita =
 
 
 var list = new List<PizzaRecipes>();
+var regex = new Regex(@"(?>[1-9]{1}\s{1}\b(?>Regina|Vege|4 saisons)\b\s{0,1})");
 list.Add(regina);
 list.Add(fourSeasons);
 list.Add(vege);
 list.Add(margherita);
 
 Formater formater = new Formater();
-formater.FormatAndWriteTo(list, FormatEnum.JSON);
+formater.FormatAndWriteTo(list, FormatEnum.XML);
 
 while (true) {
     var input = Console.ReadLine();    

@@ -29,7 +29,6 @@ namespace Pizzeria
         // implementing multiple versions of the algorithm on its own.
         public string ComputeDiscounts(List<PizzaRecipes> pizzasInBill)
         {
-            Console.WriteLine("Applying discount");
             switch (pizzasInBill.Count)
             {
                 case 1:
