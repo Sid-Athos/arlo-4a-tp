@@ -27,18 +27,19 @@ namespace Pizzeria
 
         // The Context delegates some work to the Strategy object instead of
         // implementing multiple versions of the algorithm on its own.
-        public string ComputeDiscounts(List<PizzaRecipes> pizzasInBill)
+        public void ComputeDiscounts(List<PizzaRecipes> pizzasInBill)
         {
             switch (pizzasInBill.Count)
             {
                 case 1:
+
                     SetDiscountStrategy(new SinglePizzaDiscount());
-                    return _strategy.ApplyDiscount(new List<PizzaRecipes> ());
+                    _strategy.ApplyDiscount(pizzasInBill);
+                    break;
                 case > 1 when pizzasInBill.Count % 3 == 0:
                     SetDiscountStrategy(new PizzaPackDiscount());
-                    return _strategy.ApplyDiscount(new List<PizzaRecipes> ());
-                default:
-                    return "0";
+                    _strategy.ApplyDiscount(new List<PizzaRecipes> ());
+                    break;
             }
         }
     }
@@ -50,7 +51,7 @@ namespace Pizzeria
     // Strategies.
     public interface IStrategy
     {
-        string ApplyDiscount(object data);
+        void ApplyDiscount(List<PizzaRecipes> data);
     }
 
     // Concrete Strategies implement the algorithm while following the base
@@ -58,24 +59,17 @@ namespace Pizzeria
     // Context.
     class SinglePizzaDiscount : IStrategy
     {
-        public string ApplyDiscount(object data)
-        {
-            var list = data as List<string>;
-            list.Sort();
-
-            return "lal";
+        public void ApplyDiscount(List<PizzaRecipes> data) {
+            data[0].Price *= 0.8;
         }
     }
 
     class PizzaPackDiscount : IStrategy
     {
-        public string ApplyDiscount(object data)
-        {
-            var list = data as List<string>;
-            list.Sort();
-            list.Reverse();
-
-            return "lol";
+        public void ApplyDiscount(List<PizzaRecipes> data) {
+             data.Min(pizza => pizza.Price);
+             var forFree = data.Find(pizza => pizza.Price == data.Min(pizza => pizza.Price));
+             forFree.Price = 0;
         }
     }
 
@@ -90,13 +84,13 @@ namespace Pizzeria
 
             Console.WriteLine("Client: Strategy is set to normal sorting.");
             bill.SetDiscountStrategy(new SinglePizzaDiscount());
-            Console.WriteLine(bill.ComputeDiscounts(new List<PizzaRecipes>()));
+            bill.ComputeDiscounts(new List<PizzaRecipes>());
             
             Console.WriteLine();
             
             Console.WriteLine("Client: Strategy is set to reverse sorting.");
             bill.SetDiscountStrategy(new PizzaPackDiscount());
-            Console.WriteLine(bill.ComputeDiscounts(new List<PizzaRecipes>()));
+            bill.ComputeDiscounts(new List<PizzaRecipes>());
         }
     }
 }
