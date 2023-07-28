@@ -1,0 +1,93 @@
+[
+  {
+    "name": "Regina",
+    "price": 8.0,
+    "ingredients": {
+      "Tomate": {
+        "g": 150.0
+      },
+      "Mozzarella": {
+        "g": 125.0
+      },
+      "Fromage râpé": {
+        "g": 100.0
+      },
+      "Jambon": {
+        "tranches": 2.0
+      },
+      "Champignons frais": {
+        "g": 150.0
+      },
+      "Huile d'olive": {
+        "cuillères à soupe": 150.0
+      }
+    },
+    "TypeId": "Pizzeria.PizzaRecipes, Pizzeria, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"
+  },
+  {
+    "name": "4 saisons",
+    "price": 8.0,
+    "ingredients": {
+      "Tomate": {
+        "g": 150.0
+      },
+      "Mozzarella": {
+        "g": 125.0
+      },
+      "Champignons frais": {
+        "g": 100.0
+      },
+      "Jambon": {
+        "tranches": 2.0
+      },
+      "Poivron": {
+        "": 0.5
+      },
+      "Olives": {
+        "poignée": 1.0
+      }
+    },
+    "TypeId": "Pizzeria.PizzaRecipes, Pizzeria, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"
+  },
+  {
+    "name": "Végétarienne",
+    "price": 7.5,
+    "ingredients": {
+      "Tomate": {
+        "g": 150.0
+      },
+      "Mozzarella": {
+        "g": 125.0
+      },
+      "Courgette": {
+        "": 0.5
+      },
+      "Tomates cerise": {
+        "": 6.0
+      },
+      "Poivron jaune": {
+        "": 1.0
+      },
+      "Olives": {
+        "quelques": 0.0
+      }
+    },
+    "TypeId": "Pizzeria.PizzaRecipes, Pizzeria, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"
+  },
+  {
+    "name": "Margherita",
+    "price": 7.0,
+    "ingredients": {
+      "Tomate": {
+        "g": 150.0
+      },
+      "Mozzarella": {
+        "g": 200.0
+      },
+      "Basilic": {
+        "quelques": 0.0
+      }
+    },
+    "TypeId": "Pizzeria.PizzaRecipes, Pizzeria, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"
+  }
+]

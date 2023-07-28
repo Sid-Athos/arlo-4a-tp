@@ -62,6 +62,10 @@ list.Add(regina);
 list.Add(fourSeasons);
 list.Add(vege);
 list.Add(margherita);
-var input = "";
-    Console.WriteLine(JsonConvert.SerializeObject(list, Formatting.Indented));
-    Console.WriteLine(input);
+
+Formater formater = new Formater();
+formater.FormatAndWriteTo(list, FormatEnum.XML);
+
+while (true) {
+    var input = Console.ReadLine();    
+}
